@@ -1,0 +1,86 @@
+:root, [data-bs-theme="light"] {
+    --bs-primary: 789456;
+    --bs-primary-text: #789456;
+    --bs-primary-rgb: 120, 148, 86;
+    --bs-primary-bg-subtle: #e7fdcd;
+    --bs-primary-border-subtle: #bedc98;
+    --bs-heading-color: #090018;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #789456;
+    --bs-dropdown-link-hover-bg: #110031;
+    --bs-dropdown-bg: #090018;
+}
+
+.btn-primary {
+    --bs-btn-bg: #789456;
+    --bs-btn-border-color: #090018;
+    --bs-btn-hover-bg: #bedc98;
+    --bs-btn-active-color: #e7fdcd;
+    --bs-btn-active-bg: #090018;
+}
+
+[data-bs-theme="dark"] {
+    --bs-primary: 789456;
+    --bs-dark-rgb: 17, 0, 49;
+    --bs-dark: #110031;
+    --bs-body-color: #ebe3ff;
+    --bs-light-text: #e8e0ff;
+    --bs-light-border-subtle: #c0b0ec;
+    --bs-light-bg-subtle: #35265b;
+}
+
+
+body {
+    background-color: white;
+    min-height: 100vh;
+}
+
+body nav + .container, body nav + .container-fluid {
+    min-height: calc(100vh - 80px);
+}
+
+.form-floating > select {
+    padding-left: .75rem;
+}
+
+.form-floating > .form-control-plaintext:focus, .form-floating > .form-control-plaintext:not(:placeholder-shown), .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 1rem;
+    padding-bottom: .625rem;
+    height: initial;
+}
+
+.form-floating > .form-control-plaintext ~ label, .form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
+    opacity: 0.65;
+    transform: scale(.85) translateY(-1.2rem) translateX(.15rem);
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0.2rem .75rem;
+    line-height: 1.5;
+    height: initial;
+}
+
+.form-floating > .form-control:focus ~ label, .form-floating > .form-select:focus ~ label {
+    opacity: 1;
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.form-floating > label {
+    padding: .7rem 1rem;
+}
+
+.form-floating > .form-select, .form-floating > .form-control, .form-floating > .form-control-plaintext {
+    padding-top: 1rem;
+    padding-bottom: .625rem;
+    height: initial;
+}
+
+.form-select:focus, .form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-form-control-bg);
+    border-color: var(--bs-dark);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+}
