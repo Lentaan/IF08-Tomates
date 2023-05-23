@@ -14,7 +14,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     // $results contient un tableau avec la liste des clés.
     ?>
 
-    <form role="form" class="container p-5 bg-light rounded" method='post' action='router2.php'>
+    <form role="form" class="container p-5 bg-light rounded" method='post' action='app/router/router2.php'>
         <?php if (isset($args['code_err']) && $args['code_err'] == 1) : ?>
             <div class="alert alert-danger mb-5" role="alert">
                 Il y a eu un soucis lors de votre inscription, veuillez réessayer

@@ -14,7 +14,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     // $results contient un tableau avec la liste des clés.
     ?>
 
-    <form role="form" class="container p-5 bg-light rounded" method='get' action='router2.php'>
+    <form role="form" class="container p-5 bg-light rounded" method='get' action='app/router/router2.php'>
         <input type="hidden" name='action' value='<?= $action ?>'>
         <div class="form-group form-floating mb-4">
             <select class="form-select" id='id' name='id'>

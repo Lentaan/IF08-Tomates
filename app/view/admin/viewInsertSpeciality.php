@@ -12,7 +12,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
     include $root . '/app/view/fragment/fragmentTitleSection.php';
     ?>
-    <form role="form" class="px-5" method='get' action='router2.php'>
+    <form role="form" class="px-5" method='get' action='app/router/router2.php'>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
             <input type="hidden" name='action' value='specialityCreated'>
             <div class="form-floating mb-3 w-50">

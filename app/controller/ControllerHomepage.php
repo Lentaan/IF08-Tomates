@@ -14,7 +14,7 @@ class ControllerHomepage
             if ($user) {
                 $_SESSION['user'] = $user = new ModelUser($user);
             } else {
-                header('Location: /app/router/router2.php?action=login&code_err=2');
+                header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=login&code_err=2');
             }
         }
         $vue = $root . '/app/view/homepage/viewHomepage.php';
@@ -57,9 +57,9 @@ class ControllerHomepage
         $newUser = array_map('Model::processChars', $_POST['user']);
         $results = ModelUser::insert($newUser);
         if ($results) {
-            header('Location: /app/router/router2.php?action=login&code_suc=1&id='.$results);
+            header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=login&code_suc=1&id='.$results);
         } else {
-            header('Location: /app/router/router2.php?action=subscribe&code_err=1');
+            header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=subscribe&code_err=1');
         }
 
     }

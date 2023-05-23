@@ -42,10 +42,10 @@ switch ($action) {
     case "doctorReadAll" :
     case "doctorNbPerPatient" :
     case "infoReadAll" :
-        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 0) {
+        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === '0') {
             ControllerAdmin::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=login&code_err=3');
         }
         break;
     case "freeAppointmentList" :
@@ -53,10 +53,10 @@ switch ($action) {
     case "appointmentsCreated" :
     case "appointmentsWithPatient" :
     case "distinctPatientList" :
-        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 1) {
+        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === '1') {
             ControllerDoctor::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=login&code_err=3');
         }
         break;
     case "patientProfil" :
@@ -64,10 +64,10 @@ switch ($action) {
     case "appointmentCreate" :
     case "appointmentCreated" :
     case "appointmentChooseDate" :
-        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 2) {
+        if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === '2') {
             ControllerPatient::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/app/router/router2.php?action=login&code_err=3');
         }
         break;
     case "viewHomepage" :

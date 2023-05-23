@@ -23,10 +23,13 @@ class ModelUser
     }
 
     public static function getNamedStatus($status) {
-        return match($status) {
-            self::ADMIN => 'Administrateur',
-            self::DOCTOR => 'Praticien',
-            self::PATIENT => 'Patient'
+        switch($status) {
+            case self::ADMIN :
+                return'Administrateur';
+            case self::DOCTOR :
+                return 'Praticien';
+            case self::PATIENT :
+                return 'Patient';
         };
     }
 

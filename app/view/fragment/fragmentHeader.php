@@ -11,7 +11,8 @@
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
             crossorigin="anonymous">
 
-    <link href="/public/css/perso_css.css" rel="stylesheet"/>
+    <base href="http://dev-isi.utt.fr/~sattlerc/lo07_tp/Projet/">
+    <link href="public/css/perso_css.css" rel="stylesheet"/>
 
     <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

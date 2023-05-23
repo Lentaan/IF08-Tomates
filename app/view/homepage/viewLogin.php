@@ -12,7 +12,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
     include $root . '/app/view/fragment/fragmentTitleSection.php';
     ?>
-    <form role="form" class="px-5" method='post' action='router2.php'>
+    <form role="form" class="px-5" method='post' action='app/router/router2.php'>
         <?php if (isset($args['code_err']) && $args['code_err'] == 2) : ?>
             <div class="alert alert-danger mb-5" role="alert">
                 Erreur de connexion, l'identifiant ou le mot de passe est incorrecte.
