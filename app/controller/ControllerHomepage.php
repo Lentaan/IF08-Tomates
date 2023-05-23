@@ -63,4 +63,22 @@ class ControllerHomepage
         }
 
     }
+
+    public static function upgradeInnov() {
+        include 'config.php';
+        $vue = $root . '/app/view/homepage/viewUpgradeInnov.php';
+        if (DEBUG) {
+            echo("ControllerHomepage : upgradeInnov : vue = $vue");
+        }
+        require($vue);
+    }
+
+    public static function originalInnov() {
+        include 'config.php';
+        $vue = $root . '/app/view/homepage/viewOriginalInnov.php';
+        if (DEBUG) {
+            echo("ControllerHomepage : originalInnov : vue = $vue");
+        }
+        require($vue);
+    }
 }

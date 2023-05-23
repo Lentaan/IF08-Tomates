@@ -71,10 +71,11 @@ switch ($action) {
         }
         break;
     case "viewHomepage" :
-    case "viewInnovations" :
     case "login" :
     case "subscribe" :
     case "subscribed" :
+    case "originalInnov" :
+    case "upgradeInnov" :
         ControllerHomepage::$action($args);
         break;
 
