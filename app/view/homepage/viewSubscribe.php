@@ -45,7 +45,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
                 <label for="password">Mot de passe : </label>
             </div>
         </div>
-        <div class="form-group form-floating mb-4">
+        <div class="form-group form-floating mb-5">
             <select class="form-select" id='speciality_id' name='user[status]'>
                 <option value="0">Administrateur</option>
                 <option value="1">Praticien</option>
