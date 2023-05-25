@@ -1,0 +1,30 @@
+<?php
+
+$routes = [
+    'specialite' => ['admin', 'specialityReadAll'],
+    'informations' =>['admin', 'infoReadAll'],
+    'specialite/selection' => ['admin', 'specialityReadId'],
+    'specialite/afficher' => ['admin', 'specialityReadOne'],
+    'specialite/ajouter' => ['admin', 'specialityCreate'],
+    'specialite/cree' =>['admin', 'specialityCreated'],
+    'praticiens' => ['admin', 'doctorReadAll'],
+    'praticiens/nombre-patients' => ['admin', 'doctorNbPerPatient'],
+    'disponibilite' => ['doctor', 'freeAppointmentList'],
+    'disponibilite/ajouter' => ['doctor', 'appointmentsCreate'],
+    'disponibilite/cree' => ['doctor', 'appointmentsCreated'],
+    'rendez-vous/praticien' => ['doctor', 'appointmentsWithPatient'],
+    'patients' => ['doctor', 'distinctPatientList'],
+    'profil' => ['patient', 'patientProfil'],
+    'rendez-vous/patient' => ['patient', 'appointmentsWithDoctor'],
+    'rendez-vous/ajouter' => ['patient', 'appointmentCreate'],
+    'rendez-vous/choisir-une-date' => ['patient', 'appointmentChooseDate'],
+    'rendez-vous/cree' => ['patient', 'appointmentCreated'],
+    '' => ['homepage', 'viewHomepage'],
+    'accueil' => ['homepage', 'viewHomepage'],
+    'connexion' => ['homepage', 'login'],
+    'inscription' => ['homepage', 'subscribe'],
+    'deconnexion' => ['homepage', 'viewHomepage'],
+    'inscrit' => ['homepage', 'subscribed'],
+    'innovations/amelioration-du-router' => ['homepage', 'upgradeInnov'],
+    'innovations/donnees-statistiques' => ['homepage', 'originalInnov']
+];

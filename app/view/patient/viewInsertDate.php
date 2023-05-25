@@ -12,9 +12,8 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
     include $root . '/app/view/fragment/fragmentTitleSection.php';
     ?>
-    <form role="form" class="px-5" method='get' action='router2.php'>
+    <form role="form" class="px-5" method='get' action='rendez-vous/cree'>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
-            <input type="hidden" name='action' value='appointmentCreated'>
             <input type="hidden" name='entity[doctor_id]' value='<?= $args['entity']['doctor_id'] ?>'>
             <div class="form-group form-floating mb-4">
                 <select class="form-select" id='appt' name='entity[appt]'>

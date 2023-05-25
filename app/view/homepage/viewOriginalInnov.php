@@ -13,6 +13,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
 
     // $results contient un tableau avec la liste des clés.
     ?>
+
     <div class="container row m-auto bg-light-subtle p-5 rounded-5">
         <div data-bs-theme="dark" class="col-6 p-5 bg-primary rounded-start-5">
             <h2 class="h2">Proposition 1 : Statistiques</h2>

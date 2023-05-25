@@ -1,13 +1,12 @@
 <!-- ----- debut ControllerUser -->
 <?php
-require_once '../model/ModelUser.php';
-require_once '../model/ModelSpeciality.php';
-require_once '../model/ModelAppointment.php';
+require_once MODEL_DIR . 'ModelUser.php';
+require_once MODEL_DIR . 'ModelSpeciality.php';
+require_once MODEL_DIR . 'ModelAppointment.php';
 
 class ControllerAdmin
 {
 
-    // --- Liste des users
     public static function specialityReadAll($args)
     {
         list($nbColumns, $columns, $results) = ModelSpeciality::getAll();
@@ -117,7 +116,7 @@ class ControllerAdmin
     }
 
     // Créer une liste sans doublons des régions
-    public static function doctorReadALl($args)
+    public static function doctorReadAll($args)
     {
         list($nbColumns, $columns, $results) = ModelUser::getAllDoctor();
         // ----- Construction chemin de la vue
@@ -126,7 +125,7 @@ class ControllerAdmin
         $slogan = 'Liste des praticiens et de leur spécialités';
         $vue = $root . '/app/view/viewAll.php';
         if (DEBUG) {
-            echo("ControllerAdmin : doctorReadALl : vue = $vue");
+            echo("ControllerAdmin : doctorReadAll : vue = $vue");
         }
         require($vue);
     }

@@ -12,6 +12,11 @@ class ModelUser
     const PATIENT = 2;
     const INSERT = ':id, :lastname, :firstname, :address, :login, :password, :status, :speciality_id';
 
+    public static function getNameRoles()
+    {
+        return ['admin' => self::ADMIN, 'doctor' => self::DOCTOR, 'patient' => self::PATIENT, ];
+    }
+
     public function __toString()
     {
         return implode(" : ", Model::dehydrate(['login', 'lastname', 'firstname', 'address', 'status', 'speciality_id'], $this));

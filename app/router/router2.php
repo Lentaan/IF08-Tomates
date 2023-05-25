@@ -5,10 +5,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-require('../controller/ControllerHomepage.php');
-require('../controller/ControllerAdmin.php');
-require('../controller/ControllerDoctor.php');
-require('../controller/ControllerPatient.php');
+require(CONTROLLER_DIR . 'ControllerHomepage.php');
+require(CONTROLLER_DIR . 'ControllerAdmin.php');
+require(CONTROLLER_DIR . 'ControllerDoctor.php');
+require(CONTROLLER_DIR . 'ControllerPatient.php');
 
 if (!isset($_SESSION)) {
     session_start();
@@ -45,7 +45,7 @@ switch ($action) {
         if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 0) {
             ControllerAdmin::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: connexion?code_err=3');
         }
         break;
     case "freeAppointmentList" :
@@ -56,7 +56,7 @@ switch ($action) {
         if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 1) {
             ControllerDoctor::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: connexion?code_err=3');
         }
         break;
     case "patientProfil" :
@@ -67,7 +67,7 @@ switch ($action) {
         if (isset($_SESSION['user']) && $_SESSION['user']->getStatus() === 2) {
             ControllerPatient::$action($args);
         } else {
-            header('Location: /app/router/router2.php?action=login&code_err=3');
+            header('Location: connexion?code_err=3');
         }
         break;
     case "viewHomepage" :

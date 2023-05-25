@@ -14,13 +14,12 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     // $results contient un tableau avec la liste des clés.
     ?>
 
-    <form role="form" class="container p-5 bg-light rounded" method='post' action='router2.php'>
+    <form role="form" class="container p-5 bg-light rounded" method='post' action='inscrit'>
         <?php if (isset($args['code_err']) && $args['code_err'] == 1) : ?>
             <div class="alert alert-danger mb-5" role="alert">
                 Il y a eu un soucis lors de votre inscription, veuillez réessayer
             </div>
         <?php endif; ?>
-        <input type="hidden" name='action' value='subscribed'>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
             <div class="form-floating mb-3 w-50">
                 <input class="form-control" placeholder="Champs" id="lastname" type="text" name='user[lastname]'>

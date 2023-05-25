@@ -1,6 +1,6 @@
 <?php
-require_once '../model/ModelUser.php';
-require_once '../model/ModelSpeciality.php';
+require_once MODEL_DIR . 'ModelUser.php';
+require_once MODEL_DIR . 'ModelSpeciality.php';
 
 class ControllerHomepage
 {
@@ -14,22 +14,12 @@ class ControllerHomepage
             if ($user) {
                 $_SESSION['user'] = $user = new ModelUser($user);
             } else {
-                header('Location: /app/router/router2.php?action=login&code_err=2');
+                header('Location: connexion?code_err=2');
             }
         }
         $vue = $root . '/app/view/homepage/viewHomepage.php';
         if (DEBUG) {
             echo("ControllerHomepage : viewHomepage : vue = $vue");
-        }
-        require($vue);
-    }
-
-    public static function mesPropositions($args)
-    {
-        include 'config.php';
-        $vue = $root . '/app/view/homepage/viewInnovations.php';
-        if (DEBUG) {
-            echo("ControllerHomepage : mesPropositions : vue = $vue");
         }
         require($vue);
     }
@@ -57,9 +47,9 @@ class ControllerHomepage
         $newUser = array_map('Model::processChars', $_POST['user']);
         $results = ModelUser::insert($newUser);
         if ($results) {
-            header('Location: /app/router/router2.php?action=login&code_suc=1&id='.$results);
+            header('Location: connexion?code_suc=1&id='.$results);
         } else {
-            header('Location: /app/router/router2.php?action=subscribe&code_err=1');
+            header('Location: inscription?code_err=1');
         }
 
     }
@@ -76,6 +66,16 @@ class ControllerHomepage
     public static function originalInnov() {
         include 'config.php';
         $vue = $root . '/app/view/homepage/viewOriginalInnov.php';
+        if (DEBUG) {
+            echo("ControllerHomepage : originalInnov : vue = $vue");
+        }
+        require($vue);
+    }
+
+
+    public static function display404() {
+        include 'config.php';
+        $vue = $root . '/app/view/homepage/view404.php';
         if (DEBUG) {
             echo("ControllerHomepage : originalInnov : vue = $vue");
         }

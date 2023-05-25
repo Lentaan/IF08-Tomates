@@ -1,7 +1,7 @@
 <?php
-require_once '../model/ModelUser.php';
-require_once '../model/ModelSpeciality.php';
-require_once '../model/ModelAppointment.php';
+require_once MODEL_DIR . 'ModelUser.php';
+require_once MODEL_DIR . 'ModelSpeciality.php';
+require_once MODEL_DIR . 'ModelAppointment.php';
 class ControllerPatient
 {
     public static function patientProfil($args)

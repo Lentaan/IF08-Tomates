@@ -78,7 +78,7 @@ class Model extends PDO
     public static function getInstance()
     {
         // les variables sont définies dans le fichier config.php
-        include '../controller/config.php';
+        include CONTROLLER_DIR . 'config.php';
 
         if (DEBUG) {
             echo("Model : getInstance : dsn = $dsn</br>");
