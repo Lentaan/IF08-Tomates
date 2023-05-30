@@ -65,6 +65,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
                 N'en sélectionné une seulement si vous êtes praticien.
             </small>
         </div>
+        <a class="btn btn-dark" href="connexion">Retour connexion</a>
         <button class="btn btn-primary" type="submit">S'inscrire</button>
     </form>
 </div>

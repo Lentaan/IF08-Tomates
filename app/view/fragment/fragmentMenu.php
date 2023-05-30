@@ -24,7 +24,7 @@
                         <li><a class="dropdown-item" href="praticiens/nombre-patients">Nombre de praticien par patient</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">Autre</h6></li>
-                        <li><a class="dropdown-item" href="informations">Info</a></li>
+                        <li><a class="dropdown-item" href="informations">Toutes les informations</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>
