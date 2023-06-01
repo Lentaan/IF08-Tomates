@@ -187,4 +187,36 @@ where a.doctor_id = d.id
         }
     }
 
+    public static function getMostRecentFreeSpeciality($speciality)
+    {
+        $date = date('Y-m-d à H\h00');
+        $query = "select d.firstname, d.lastname, d.address, s.label, a.appt_date
+from user p, user d, appointment a, speciality s 
+where a.doctor_id = d.id 
+  and a.patient_id = p.id
+  and p.id = 0
+  and d.speciality_id = $speciality
+  and d.speciality_id = s.id
+  and appt_date >= $date
+order by appt_date ASC
+limit 1;";
+        return Model::getWithColumns($query);
+    }
+
+    public static function getFreeApptForDay($date, $hours = 10)
+    {
+        $nextDay = date("Y-m-d à ${hours}\h00", strtotime($date .' +1 day'));
+        $day = date("Y-m-d à ${hours}\h00", strtotime($date));
+        $query = "select d.firstname, d.lastname, d.address, s.label, a.appt_date
+from user p, user d, appointment a, speciality s 
+where a.doctor_id = d.id 
+  and a.patient_id = p.id
+  and p.id = 0
+  and d.speciality_id = s.id
+  and appt_date >= $day
+  and appt_date < $nextDay
+order by appt_date";
+        return Model::getWithColumns($query);
+    }
+
 }

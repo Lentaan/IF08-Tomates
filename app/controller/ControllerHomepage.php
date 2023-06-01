@@ -17,7 +17,7 @@ class ControllerHomepage
                 header('Location: connexion?code_err=2');
             }
         }
-        $vue = $root . '/app/view/homepage/viewHomepage.php';
+        $vue = VIEW_DIR . 'homepage/viewHomepage.php';
         if (DEBUG) {
             echo("ControllerHomepage : viewHomepage : vue = $vue");
         }
@@ -26,7 +26,7 @@ class ControllerHomepage
 
     public static function login($args) {
         include 'config.php';
-        $vue = $root . '/app/view/homepage/viewLogin.php';
+        $vue = VIEW_DIR . 'homepage/viewLogin.php';
         if (DEBUG) {
             echo("ControllerHomepage : login : vue = $vue");
         }
@@ -36,7 +36,7 @@ class ControllerHomepage
     public static function subscribe($args) {
         include 'config.php';
         $results = ModelSpeciality::getAll()[2];
-        $vue = $root . '/app/view/homepage/viewSubscribe.php';
+        $vue = VIEW_DIR . 'homepage/viewSubscribe.php';
         if (DEBUG) {
             echo("ControllerHomepage : subscribe : vue = $vue");
         }
@@ -56,7 +56,7 @@ class ControllerHomepage
 
     public static function upgradeInnov() {
         include 'config.php';
-        $vue = $root . '/app/view/homepage/viewUpgradeInnov.php';
+        $vue = VIEW_DIR . 'homepage/viewUpgradeInnov.php';
         if (DEBUG) {
             echo("ControllerHomepage : upgradeInnov : vue = $vue");
         }
@@ -65,7 +65,17 @@ class ControllerHomepage
 
     public static function originalInnov() {
         include 'config.php';
-        $vue = $root . '/app/view/homepage/viewOriginalInnov.php';
+        list($nbColumns, $columns, $result) = ModelUser::getMostFreeDoctor();
+        $results['praticiens les plus libres'] = [$columns, $result];
+        list($nbColumns, $columns, $result) = ModelUser::getMostAskedDoctor();
+        $results['praticiens les plus populaires'] = [$columns, $result];
+        list($nbColumns, $columns, $result) = ModelUser::getMostPopularDoctorAddress();
+        $results['villes les plus populaires des praticiens'] = [$columns, $result];
+        list($nbColumns, $columns, $result) = ModelUser::getMostPopularSpeciality();
+        $results['spécialités les plus courantes'] = [$columns, $result];
+        $results['plus demandé de Paris en généraliste'] = ModelUser::getMostAskedDoctorByAddressAndSpeciality('Paris', 1);
+
+        $vue = VIEW_DIR . 'homepage/viewOriginalInnov.php';
         if (DEBUG) {
             echo("ControllerHomepage : originalInnov : vue = $vue");
         }
@@ -75,7 +85,7 @@ class ControllerHomepage
 
     public static function display404() {
         include 'config.php';
-        $vue = $root . '/app/view/homepage/view404.php';
+        $vue = VIEW_DIR . 'homepage/view404.php';
         if (DEBUG) {
             echo("ControllerHomepage : originalInnov : vue = $vue");
         }

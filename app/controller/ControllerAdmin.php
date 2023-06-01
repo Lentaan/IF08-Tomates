@@ -14,7 +14,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = "Liste des spécialités";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadAll : vue = $vue");
         }
@@ -38,7 +38,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = "Liste des informations";
-        $vue = $root . '/app/view/admin/viewAllMultiple.php';
+        $vue = VIEW_DIR . 'admin/viewAllMultiple.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadAll : vue = $vue");
         }
@@ -61,7 +61,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = 'Sélection d\'un id';
-        $vue = $root . '/app/view/viewId.php';
+        $vue = VIEW_DIR . 'viewId.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadId : vue = $vue");
         }
@@ -78,7 +78,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = "Spécialité sélectionnée";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadOne : vue = $vue");
         }
@@ -92,7 +92,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = "Ajout d'une spécialité";
-        $vue = $root . '/app/view/admin/viewInsertSpeciality.php';
+        $vue = VIEW_DIR . 'admin/viewInsertSpeciality.php';
         if (DEBUG) {
             echo("ControllerAdmin : userCreate : vue = $vue");
         }
@@ -108,7 +108,7 @@ class ControllerAdmin
         $title .= ' | Administrateur';
         $slogan = "Spécialité crée";
         $entity_name = "La nouvelle spécialité ";
-        $vue = $root . '/app/view/viewInserted.php';
+        $vue = VIEW_DIR . 'viewInserted.php';
         if (DEBUG) {
             echo("ControllerAdmin : specialityCreated : vue = $vue");
         }
@@ -123,7 +123,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= ' | Administrateur';
         $slogan = 'Liste des praticiens et de leur spécialités';
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : doctorReadAll : vue = $vue");
         }
@@ -137,7 +137,7 @@ class ControllerAdmin
         include 'config.php';
         $title .= " | Administrateur";
         $slogan = "Nombre de patient par praticien (rendez-vous)";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userPerAddress : vue = $vue");
         }

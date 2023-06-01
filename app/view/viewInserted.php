@@ -1,15 +1,15 @@
 <!-- ----- début viewInserted -->
 <?php
-require($root . '/app/view/fragment/fragmentHeader.php');
+require(VIEW_DIR . 'fragment/fragmentHeader.php');
 ?>
 
 <body>
 <?php
-include $root . '/app/view/fragment/fragmentMenu.php';
+include VIEW_DIR . 'fragment/fragmentMenu.php';
 ?>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentTitleSection.php';
+    include VIEW_DIR . 'fragment/fragmentTitleSection.php';
     ?>
     <!-- ===================================================== -->
     <?php
@@ -30,7 +30,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
 
     echo("</div>");
 
-    include $root . '/app/view/fragment/fragmentFooter.php';
+    include VIEW_DIR . 'fragment/fragmentFooter.php';
     ?>
     <!-- ----- fin viewInserted -->    
 

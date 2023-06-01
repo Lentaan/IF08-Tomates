@@ -29,7 +29,7 @@ if ($_SERVER['HTTP_HOST'] === 'dev-isi.utt.fr') {
 }
 
 // chemin absolu vers le répertoire du projet SUR DEV-ISI
-$root = dirname(dirname(__DIR__)) . "/";
+
 
 
 if (DEBUG) {
@@ -38,7 +38,7 @@ if (DEBUG) {
     echo(" <li>username = $username</li>");
     echo(" <li>password = $password</li>");
     echo("<li>---</li>");
-    echo(" <li>root = $root</li>");
+    echo(" <li>root = {$ROOT_DIR}</li>");
     echo("</ul>");
 }
 ?>

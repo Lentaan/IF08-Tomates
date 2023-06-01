@@ -1,16 +1,16 @@
 <!-- ----- début viewInsert -->
 
 <?php
-require($root . '/app/view/fragment/fragmentHeader.php');
+require(VIEW_DIR . 'fragment/fragmentHeader.php');
 ?>
 
 <body>
 <?php
-include $root . '/app/view/fragment/fragmentMenu.php';
+include VIEW_DIR . 'fragment/fragmentMenu.php';
 ?>
 <div class="pb-3 container bg-light-subtle">
     <?php
-    include $root . '/app/view/fragment/fragmentTitleSection.php';
+    include VIEW_DIR . 'fragment/fragmentTitleSection.php';
     ?>
     <form role="form" class="px-5" method='get' action='rendez-vous/choisir-une-date'>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
@@ -32,7 +32,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     </form>
 </div>
 <?php
-include $root . '/app/view/fragment/fragmentFooter.php'; ?>
+include VIEW_DIR . 'fragment/fragmentFooter.php'; ?>
 
 <!-- ----- fin viewInsert -->
 
