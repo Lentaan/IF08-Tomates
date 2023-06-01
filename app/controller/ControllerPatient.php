@@ -1,7 +1,7 @@
 <?php
-require_once '../model/ModelUser.php';
-require_once '../model/ModelSpeciality.php';
-require_once '../model/ModelAppointment.php';
+require_once MODEL_DIR . 'ModelUser.php';
+require_once MODEL_DIR . 'ModelSpeciality.php';
+require_once MODEL_DIR . 'ModelAppointment.php';
 class ControllerPatient
 {
     public static function patientProfil($args)
@@ -11,7 +11,7 @@ class ControllerPatient
         // ----- Construction chemin de la vue
         $title .= ' | Profil';
         $slogan = "Toutes mes informations";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerPatient : patientReadOne : vue = $vue");
         }
@@ -24,7 +24,7 @@ class ControllerPatient
         // ----- Construction chemin de la vue
         $title .= ' | Rendez-vous';
         $slogan = "Tous mes prochains rendez-vous";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerPatient : patientReadOne : vue = $vue");
         }
@@ -37,7 +37,7 @@ class ControllerPatient
         $results = ModelUser::getAllDoctor()[2];
         $title .= ' | Rendez-vous';
         $slogan = "Prendre un nouveau rendez-vous";
-        $vue = $root . '/app/view/patient/viewInsertAppointment.php';
+        $vue = VIEW_DIR . 'patient/viewInsertAppointment.php';
         if (DEBUG) {
             echo("ControllerAdmin : userCreate : vue = $vue");
         }
@@ -49,7 +49,7 @@ class ControllerPatient
         $results = ModelAppointment::getDoctorFreeAppt($args['entity']['doctor_id']);
         $title .= ' | Rendez-vous';
         $slogan = "Prendre un nouveau rendez-vous - 2";
-        $vue = $root . '/app/view/patient/viewInsertDate.php';
+        $vue = VIEW_DIR . 'patient/viewInsertDate.php';
         if (DEBUG) {
             echo("ControllerAdmin : userCreate : vue = $vue");
         }
@@ -68,7 +68,7 @@ class ControllerPatient
         $title .= ' | Rendez-vous';
         $slogan = "Rendez-vous pris";
         $entity_name = "Le nouveau rendez-vous ";
-        $vue = $root . '/app/view/viewInserted.php';
+        $vue = VIEW_DIR . 'viewInserted.php';
         if (DEBUG) {
             echo("ControllerAdmin : specialityCreated : vue = $vue");
         }

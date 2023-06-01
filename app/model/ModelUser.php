@@ -12,6 +12,11 @@ class ModelUser
     const PATIENT = 2;
     const INSERT = ':id, :lastname, :firstname, :address, :login, :password, :status, :speciality_id';
 
+    public static function getNameRoles()
+    {
+        return ['admin' => self::ADMIN, 'doctor' => self::DOCTOR, 'patient' => self::PATIENT, ];
+    }
+
     public function __toString()
     {
         return implode(" : ", Model::dehydrate(['login', 'lastname', 'firstname', 'address', 'status', 'speciality_id'], $this));
@@ -271,6 +276,78 @@ group by u2.id;";
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return -1;
         }
+    }
+
+    public static function getMostAskedDoctor()
+    {
+        $query = "select u2.firstname, u2.lastname, count(u1.id) as number 
+from user u1, user u2, appointment appt 
+where appt.patient_id = u1.id 
+  and appt.doctor_id = u2.id 
+  and u1.id != 0 
+group by u2.id order by number DESC limit 3";
+        return Model::getWithColumns($query);
+    }
+
+    public static function getMostFreeDoctor()
+    {
+        $query = "select u2.firstname, u2.lastname, count(appt.id) as number
+from user u1, user u2, appointment appt 
+where appt.patient_id = u1.id 
+  and appt.doctor_id = u2.id 
+  and u1.id = 0 
+group by u2.id order by number DESC limit 3";
+        return Model::getWithColumns($query);
+    }
+
+    public static function getMostPopularDoctorAddress()
+    {
+        $query = "select address, count(id) as number from user where status = 1 group by address order by number DESC limit 3";
+        return Model::getWithColumns($query);
+    }
+
+    public static function getMostPopularSpeciality()
+    {
+        $query = "select speciality.label, count(user.id) as number from user, speciality where status = 1 and speciality.id = user.speciality_id group by speciality_id order by number DESC limit 3";
+        return Model::getWithColumns($query);
+    }
+
+    public static function getMostAskedDoctorByAddressAndSpeciality($address, $speciality)
+    {
+        $query = "select u2.firstname, u2.lastname, count(u1.id) as number 
+from user u1, user u2, appointment appt 
+where appt.patient_id = u1.id 
+  and appt.doctor_id = u2.id 
+  and u1.id != 0 
+  and u2.address = :address
+  and u2.speciality_id = :speciality   
+group by u2.id order by number DESC limit 3";
+        try {
+            $database = Model::getInstance();
+            $statement = $database->prepare($query);
+            $statement->execute(['address' => $address, 'speciality' => $speciality]);
+            $nbColumns = $statement->columnCount();
+            $columns = [];
+            for ($i=0;$i<$nbColumns;$i++){
+                $columns[] = $statement->getColumnMeta($i)['name'];
+            }
+            return array($columns,$statement->fetchAll(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return null;
+        }
+    }
+
+    public static function getNearbyDoctor($id)
+    {
+        $query = "select u2.firstname, u2.lastname, u1.address, speciality.label as number 
+from user u1, user u2, speciality 
+where u2.status = 1 
+    and u1.status = 2
+    and u1.id = $id
+    and u2.address LIKE '%' + u1.address + '%'
+limit 5";
+        return Model::getWithColumns($query);
     }
 
 }

@@ -1,18 +1,18 @@
 <!-- ----- début viewInsert -->
 
 <?php
-require($root . '/app/view/fragment/fragmentHeader.php');
+require(VIEW_DIR . 'fragment/fragmentHeader.php');
 ?>
 
 <body>
 <?php
-include $root . '/app/view/fragment/fragmentMenu.php';
+include VIEW_DIR . 'fragment/fragmentMenu.php';
 ?>
 <div class="pb-3 container bg-light-subtle">
     <?php
-    include $root . '/app/view/fragment/fragmentTitleSection.php';
+    include VIEW_DIR . 'fragment/fragmentTitleSection.php';
     ?>
-    <form role="form" class="px-5" method='post' action='app/router/router2.php'>
+    <form role="form" class="px-5" method='post' action='<?= BASE_URL ?>accueil'>
         <?php if (isset($args['code_err']) && $args['code_err'] == 2) : ?>
             <div class="alert alert-danger mb-5" role="alert">
                 Erreur de connexion, l'identifiant ou le mot de passe est incorrecte.
@@ -29,8 +29,6 @@ include $root . '/app/view/fragment/fragmentMenu.php';
             </div>
         <?php endif; ?>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
-
-            <input type="hidden" name='action' value='viewHomepage'>
             <div class="form-floating mb-3 w-50">
                 <input class="form-control" required placeholder="Camille" id="login" type="text" name='user[login]'>
                 <label for="login">Identifiant : </label>
@@ -45,7 +43,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     </form>
 </div>
 <?php
-include $root . '/app/view/fragment/fragmentFooter.php'; ?>
+include VIEW_DIR . 'fragment/fragmentFooter.php'; ?>
 
 <!-- ----- fin viewInsert -->
 

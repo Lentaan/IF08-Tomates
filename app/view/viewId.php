@@ -1,21 +1,20 @@
 <!-- ----- début viewId -->
 <?php
-require($root . '/app/view/fragment/fragmentHeader.php');
+require(VIEW_DIR . 'fragment/fragmentHeader.php');
 ?>
 
 <body>
 <?php
-include $root . '/app/view/fragment/fragmentMenu.php';
+include VIEW_DIR . 'fragment/fragmentMenu.php';
 ?>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentTitleSection.php';
+    include VIEW_DIR . 'fragment/fragmentTitleSection.php';
 
     // $results contient un tableau avec la liste des clés.
     ?>
 
-    <form role="form" class="container p-5 bg-light rounded" method='get' action='app/router/router2.php'>
-        <input type="hidden" name='action' value='<?= $action ?>'>
+    <form role="form" class="container p-5 bg-light rounded" method='get' action='specialite/afficher'>
         <div class="form-group form-floating mb-4">
             <select class="form-select" id='id' name='id'>
                 <?php
@@ -31,6 +30,6 @@ include $root . '/app/view/fragment/fragmentMenu.php';
 </div>
 
 <?php
-include $root . '/app/view/fragment/fragmentFooter.php'; ?>
+include VIEW_DIR . 'fragment/fragmentFooter.php'; ?>
 
 <!-- ----- fin viewId -->

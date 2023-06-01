@@ -1,13 +1,13 @@
 <!-- ----- debut de la page propositions -->
 <?php
-include($root . '/app/view/fragment/fragmentHeader.php'); ?>
+include(VIEW_DIR . 'fragment/fragmentHeader.php'); ?>
 <body>
 <?php
-include($root . '/app/view/fragment/fragmentMenu.php');
+include(VIEW_DIR . 'fragment/fragmentMenu.php');
 ?>
 <div class="container-fluid">
     <?php
-    include($root . '/app/view/fragment/fragmentTitleSection.php');
+    include(VIEW_DIR . 'fragment/fragmentTitleSection.php');
     ?>
     <div class="container row m-auto bg-light-subtle p-5 rounded-5">
         <div data-bs-theme="dark" class="col-6 p-5 bg-primary rounded-start-5">
@@ -54,7 +54,7 @@ include($root . '/app/view/fragment/fragmentMenu.php');
 </div>
 
 <?php
-include($root . '/app/view/fragment/fragmentFooter.php');
+include(VIEW_DIR . 'fragment/fragmentFooter.php');
 ?>
 
 <!-- ----- fin de la page propositions -->

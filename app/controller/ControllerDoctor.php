@@ -1,7 +1,7 @@
 <?php
-require_once '../model/ModelUser.php';
-require_once '../model/ModelSpeciality.php';
-require_once '../model/ModelAppointment.php';
+require_once MODEL_DIR . 'ModelUser.php';
+require_once MODEL_DIR . 'ModelSpeciality.php';
+require_once MODEL_DIR . 'ModelAppointment.php';
 class ControllerDoctor
 {
     public static function freeAppointmentList() {
@@ -11,7 +11,7 @@ class ControllerDoctor
         $columns = ['disponibilité'];
         $title .= ' | Disponibilités';
         $slogan = "Liste de mes disponibilités";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadOne : vue = $vue");
         }
@@ -23,7 +23,7 @@ class ControllerDoctor
         include 'config.php';
         $title .= ' | Praticien';
         $slogan = "Ajout de disponibilités";
-        $vue = $root . '/app/view/doctor/viewInsertAppointments.php';
+        $vue = VIEW_DIR . 'doctor/viewInsertAppointments.php';
         if (DEBUG) {
             echo("ControllerAdmin : userCreate : vue = $vue");
         }
@@ -43,7 +43,7 @@ class ControllerDoctor
         $title .= ' | Praticien';
         $slogan = "Disponibilités de rendez-vous crée";
         $entity_name = "Les nouvelles disponibilités ";
-        $vue = $root . '/app/view/viewInserted.php';
+        $vue = VIEW_DIR . 'viewInserted.php';
         if (DEBUG) {
             echo("ControllerAdmin : specialityCreated : vue = $vue");
         }
@@ -55,7 +55,7 @@ class ControllerDoctor
         list($nbColumns, $columns, $results) = ModelAppointment::getAppointmentsWithPatient($user->getId());
         $title .= ' | Rendez-vous';
         $slogan = "Liste de mes rendez-vous";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadOne : vue = $vue");
         }
@@ -67,7 +67,7 @@ class ControllerDoctor
         list($nbColumns, $columns, $results) = ModelAppointment::getDistinctPatientList($user->getId());
         $title .= ' | Praticien';
         $slogan = "Liste de mes patients";
-        $vue = $root . '/app/view/viewAll.php';
+        $vue = VIEW_DIR . 'viewAll.php';
         if (DEBUG) {
             echo("ControllerAdmin : userReadOne : vue = $vue");
         }

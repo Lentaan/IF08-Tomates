@@ -1,15 +1,15 @@
 <!-- ----- début viewAll -->
 <?php
 
-require($root . '/app/view/fragment/fragmentHeader.php');
+require(VIEW_DIR . 'fragment/fragmentHeader.php');
 ?>
 <?php
-include $root . '/app/view/fragment/fragmentMenu.php';
+include VIEW_DIR . 'fragment/fragmentMenu.php';
 ?>
 <body>
 <div class="container">
     <?php
-    include $root . '/app/view/fragment/fragmentTitleSection.php';
+    include VIEW_DIR . 'fragment/fragmentTitleSection.php';
     ?>
 
     <table class="table table-striped table-bordered">
@@ -44,7 +44,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     </table>
 </div>
 <?php
-include $root . '/app/view/fragment/fragmentFooter.php'; ?>
+include VIEW_DIR . 'fragment/fragmentFooter.php'; ?>
 
 <!-- ----- fin viewAll -->
   
