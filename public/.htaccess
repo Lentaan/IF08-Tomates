@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteRule (.*)public/(.*) $1/$2 [R=301,L]
+RewriteBase /~sattlerc/lo07_tp/projet/public
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^.*$ index.php [QSA,L]

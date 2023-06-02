@@ -37,7 +37,7 @@ $routes = [
   'innovations/donnees-statistiques' => ['homepage', 'originalInnov']
 ];
 
-$request = str_replace(parse_url(BASE_URL)['path'], '', $_SERVER['REQUEST_URI']);
+$request = rtrim(str_replace(parse_url(BASE_URL)['path'], '', $_SERVER['REQUEST_URI']), '/');
 $parsed_path = parse_url($request)['path'];
 $args = $_GET;
 $args['method'] = $_SERVER['REQUEST_METHOD'];
@@ -51,8 +51,8 @@ if (isset($routes[$parsed_path])) {
     }
     $roles = ModelUser::getNameRoles();
 
-    if ($route[0] !== 'homepage' && (!isset($user) || $user->getStatus() !== $roles[$route[0]])) {
-        header('Location: connexion?code_err=3');
+    if ($route[0] !== 'homepage' && (!isset($user) || (int)$user->getStatus() !== $roles[$route[0]])) {
+        header(sprintf('Location: %sconnexion?code_err=3', BASE_URL));
     }
 
     $controller = 'Controller' . ucfirst($route[0]);

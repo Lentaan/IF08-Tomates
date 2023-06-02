@@ -14,7 +14,7 @@ class ControllerHomepage
             if ($user) {
                 $_SESSION['user'] = $user = new ModelUser($user);
             } else {
-                header('Location: connexion?code_err=2');
+                header(sprintf('Location: %sconnexion?code_err=2', BASE_URL));
             }
         }
         $vue = VIEW_DIR . 'homepage/viewHomepage.php';
@@ -47,9 +47,9 @@ class ControllerHomepage
         $newUser = array_map('Model::processChars', $_POST['user']);
         $results = ModelUser::insert($newUser);
         if ($results) {
-            header('Location: connexion?code_suc=1&id='.$results);
+            header(sprintf('Location: %sconnexion?code_suc=1&id=%s', BASE_URL, $results));
         } else {
-            header('Location: inscription?code_err=1');
+            header(sprintf('Location: %sinscription?code_err=1', BASE_URL));
         }
 
     }
