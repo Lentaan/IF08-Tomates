@@ -35,6 +35,9 @@ class ControllerHomepage
 
     public static function subscribe($args) {
         include 'config.php';
+        if(isset($_SESSION['temp_user'])) {
+            $temp_user = $_SESSION['temp_user'];
+        }
         $results = ModelSpeciality::getAll()[2];
         $vue = VIEW_DIR . 'homepage/viewSubscribe.php';
         if (DEBUG) {
@@ -46,10 +49,15 @@ class ControllerHomepage
         include 'config.php';
         $newUser = array_map('Model::processChars', $_POST['user']);
         $results = ModelUser::insert($newUser);
-        if ($results) {
-            header(sprintf('Location: %sconnexion?code_suc=1&id=%s', BASE_URL, $results));
-        } else {
+        if ($results === -1) {
+            $_SESSION['temp_user'] = $newUser;
             header(sprintf('Location: %sinscription?code_err=1', BASE_URL));
+        } elseif($results === -2) {
+            $_SESSION['temp_user'] = $newUser;
+            header(sprintf('Location: %sinscription?code_err=2', BASE_URL));
+        } else {
+            unset($_SESSION['temp_user']);
+            header(sprintf('Location: %sconnexion?code_suc=1&id=%s', BASE_URL, $results));
         }
 
     }

@@ -227,17 +227,24 @@ group by u2.id;";
     {
         try {
             $database = Model::getInstance();
-
-            $query = "select max(id) from user";
-            $statement = $database->query($query);
-            $tuple = $statement->fetch();
-            $id = $tuple['0'];
-            $user['id'] = $id + 1;
-
-            $query = sprintf("insert into user value (%s)", self::INSERT);
+            $query = "select id from user where login = :login";
             $statement = $database->prepare($query);
-            $statement->execute($user);
-            return $id;
+            $statement->execute(['login' => $user['login']]);
+            if ($statement->rowCount() === 0){
+                $query = "select max(id) from user";
+                $statement = $database->query($query);
+                $tuple = $statement->fetch();
+                $id = $tuple['0'];
+                $user['id'] = $id + 1;
+
+                $query = sprintf("insert into user value (%s)", self::INSERT);
+                $statement = $database->prepare($query);
+                $statement->execute($user);
+                return $id;
+            } else {
+                return -2;
+            }
+
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return -1;
@@ -280,48 +287,48 @@ group by u2.id;";
 
     public static function getMostAskedDoctor()
     {
-        $query = "select u2.firstname, u2.lastname, count(u1.id) as number 
+        $query = "select u2.firstname as Prénom, u2.lastname as Nom, count(u1.id) as Nombre_rendez_vous 
 from user u1, user u2, appointment appt 
 where appt.patient_id = u1.id 
   and appt.doctor_id = u2.id 
   and u1.id != 0 
-group by u2.id order by number DESC limit 3";
+group by u2.id order by Nombre_rendez_vous DESC limit 3";
         return Model::getWithColumns($query);
     }
 
     public static function getMostFreeDoctor()
     {
-        $query = "select u2.firstname, u2.lastname, count(appt.id) as number
+        $query = "select u2.firstname as Prénom, u2.lastname as Nom, count(appt.id) as Disponibilités
 from user u1, user u2, appointment appt 
 where appt.patient_id = u1.id 
   and appt.doctor_id = u2.id 
   and u1.id = 0 
-group by u2.id order by number DESC limit 3";
+group by u2.id order by Disponibilités DESC limit 3";
         return Model::getWithColumns($query);
     }
 
     public static function getMostPopularDoctorAddress()
     {
-        $query = "select address, count(id) as number from user where status = 1 group by address order by number DESC limit 3";
+        $query = "select address as Adresse, count(id) as Nombre_de_praticiens from user where status = 1 group by Adresse order by Nombre_de_praticiens DESC limit 3";
         return Model::getWithColumns($query);
     }
 
     public static function getMostPopularSpeciality()
     {
-        $query = "select speciality.label, count(user.id) as number from user, speciality where status = 1 and speciality.id = user.speciality_id group by speciality_id order by number DESC limit 3";
+        $query = "select speciality.label as Spécialité, count(user.id) as Nombre_de_praticiens from user, speciality where status = 1 and speciality.id = user.speciality_id group by speciality_id order by Nombre_de_praticiens DESC limit 3";
         return Model::getWithColumns($query);
     }
 
     public static function getMostAskedDoctorByAddressAndSpeciality($address, $speciality)
     {
-        $query = "select u2.firstname, u2.lastname, count(u1.id) as number 
+        $query = "select u2.firstname as Prénom, u2.lastname as Nom, count(u1.id) as Nombre_rendez_vous 
 from user u1, user u2, appointment appt 
 where appt.patient_id = u1.id 
   and appt.doctor_id = u2.id 
-  and u1.id != 0 
+  and u1.id != 0    
   and u2.address = :address
   and u2.speciality_id = :speciality   
-group by u2.id order by number DESC limit 3";
+group by u2.id order by Nombre_rendez_vous DESC limit 3";
         try {
             $database = Model::getInstance();
             $statement = $database->prepare($query);

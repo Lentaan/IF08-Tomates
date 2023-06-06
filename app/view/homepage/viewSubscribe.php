@@ -10,7 +10,6 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
 <div class="container">
     <?php
     include VIEW_DIR . 'fragment/fragmentTitleSection.php';
-
     // $results contient un tableau avec la liste des clés.
     ?>
 
@@ -20,17 +19,23 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
                 Il y a eu un soucis lors de votre inscription, veuillez réessayer
             </div>
         <?php endif; ?>
+
+        <?php if (isset($args['code_err']) && $args['code_err'] == 2) : ?>
+            <div class="alert alert-warning mb-5" role="alert">
+                Cet identifiant existe déjà dans notre base de données, veuillez réessayer
+            </div>
+        <?php endif; ?>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
             <div class="form-floating mb-3 w-50">
-                <input class="form-control" placeholder="Champs" id="lastname" type="text" name='user[lastname]'>
+                <input <?php if (isset($temp_user)) printf('value="%s"', $temp_user['lastname']) ?> class="form-control" placeholder="Champs" id="lastname" type="text" name='user[lastname]'>
                 <label for="lastname">Nom : </label>
             </div>
             <div class="form-floating mb-3 w-50">
-                <input class="form-control" placeholder="Pâquerette" id="firstname" type="text" name='user[firstname]'>
+                <input <?php if (isset($temp_user)) printf('value="%s"', $temp_user['firstname']) ?> class="form-control" placeholder="Pâquerette" id="firstname" type="text" name='user[firstname]'>
                 <label for="firstname">Prénom : </label>
             </div>
             <div class="form-floating mb-3 w-50">
-                <input class="form-control" placeholder="Paris" id="address" type="text" name='user[address]'>
+                <input <?php if (isset($temp_user)) printf('value="%s"', $temp_user['address']) ?> class="form-control" placeholder="Paris" id="address" type="text" name='user[address]'>
                 <label for="address">Adresse : </label>
             </div>
         </div>
@@ -46,9 +51,9 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
         </div>
         <div class="form-group form-floating mb-5">
             <select class="form-select" id='speciality_id' name='user[status]'>
-                <option value="0">Administrateur</option>
-                <option value="1">Praticien</option>
-                <option value="2">Patient</option>
+                <option <?php if (isset($temp_user) &&  $temp_user['status'] === 0) echo 'selected' ?> value="0">Administrateur</option>
+                <option <?php if (isset($temp_user) &&  $temp_user['status'] === 1) echo 'selected' ?> value="1">Praticien</option>
+                <option <?php if (isset($temp_user) &&  $temp_user['status'] === 2) echo 'selected' ?> value="2">Patient</option>
             </select>
             <label for="speciality_id">Sélectionner votre statut : </label>
         </div>
@@ -56,7 +61,7 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
             <select class="form-select" id='speciality_id' name='user[speciality_id]'>
                 <?php
                 foreach ($results as $result) {
-                    printf("<option value='%s'>%s</option>", $result['id'], $result['label']);
+                    printf("<option %s value='%s'>%s</option>", (isset($temp_user) &&  $temp_user['speciality_id'] === $result['id']) ? 'selected' : '', $result['id'], $result['label']);
                 }
                 ?>
             </select>

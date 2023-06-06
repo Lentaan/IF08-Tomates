@@ -31,7 +31,7 @@ class ControllerPatient
         require($vue);
     }
 
-    public static function appointmentCreate() {
+    public static function appointmentCreate($args) {
         // ----- Construction chemin de la vue
         include 'config.php';
         $results = ModelUser::getAllDoctor()[2];
@@ -47,6 +47,9 @@ class ControllerPatient
         // ----- Construction chemin de la vue
         include 'config.php';
         $results = ModelAppointment::getDoctorFreeAppt($args['entity']['doctor_id']);
+        if (empty($results)) {
+            header(sprintf('Location: %srendez-vous/ajouter?code_err=1', BASE_URL));
+        }
         $title .= ' | Rendez-vous';
         $slogan = "Prendre un nouveau rendez-vous - 2";
         $vue = VIEW_DIR . 'patient/viewInsertDate.php';

@@ -13,6 +13,11 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
     include VIEW_DIR . 'fragment/fragmentTitleSection.php';
     ?>
     <form role="form" class="px-5" method='get' action='rendez-vous/choisir-une-date'>
+        <?php if (isset($args['code_err']) && $args['code_err'] == 1) : ?>
+            <div class="alert alert-warning mb-5" role="alert">
+                Aucune disponibilité pour ce praticien
+            </div>
+        <?php endif; ?>
         <div class="form-group pb-4 d-flex justify-content-between gap-5">
             <div class="form-group form-floating mb-4">
                 <select class="form-select" id='doctor_id' name='entity[doctor_id]'>
@@ -27,7 +32,7 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
                 <label for="doctor_id">Sélectionner un praticien : </label>
             </div>
         </div>
-        <button class="btn btn-primary w-100" type="submit">Ajouter</button>
+        <button class="btn btn-primary w-100" type="submit">Choisir</button>
         <hr>
     </form>
 </div>

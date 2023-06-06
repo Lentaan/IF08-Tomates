@@ -102,7 +102,7 @@ class ModelAppointment
             $statement->execute(['id' => $appointments['id'], 'date' => $appointments['appt_date'].'%']);
             $nbRow = $statement->fetch(PDO::FETCH_NUM)[0];
             if (($appointments['max'] - $nbRow) <= 0 ) {
-                return [3, "Vous ne pouvez plus rajouter de créneaux sur ce jour"];
+                return [3, "Il n'est plus possible d'ajouter de créneaux supplémentaires pour cette journée."];
             } else {
                 $query = "select max(id) from appointment";
                 $statement = $database->prepare($query);
@@ -114,12 +114,12 @@ class ModelAppointment
                 $start = $nbRow;
                 if (($appointments['max'] - $nbRow) < $appointments['hours']) {
                     $max = $appointments['max'];
-                    $result = [2, sprintf("Seulement %d nouveaux créneaux ont été ajouté sur les %d demandé, le nombre de créneau est complet sur ce jour",
+                    $result = [2, sprintf("Seulement %d nouveaux créneaux ont été ajoutés sur les %d demandés. Le nombre de créneaux est complet pour cette journée.",
                       $appointments['max'] - $nbRow, $appointments['hours']
                     )];
                 } else {
                     $max = $appointments['hours'] + $start;
-                    $result = [1, "Les créneaux demandés ont bien été ajoutés"];
+                    $result = [1, "Les créneaux demandés ont été ajoutés avec succès."];
                 }
                 $execute = [];
                 for ($i=$start; $i<$max; $i++) {

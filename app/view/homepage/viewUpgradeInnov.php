@@ -36,10 +36,10 @@ include VIEW_DIR . 'fragment/fragmentMenu.php';
                     Les chemins corrects sont tous disponibles dans le menu de chaque rôle
                 </li>
                 <li class="list-group-item list-group-item-light">
-                    Les chemins de l'url sont parsé et associé à une route dans le fichier app/router/routes.php qui lui donne le controller et la méthode
+                    Les chemins de l'url sont parsé et associé à une route dans le fichier du router qui donne le controller et la méthode du chemin
                 </li>
                 <li class="list-group-item list-group-item-light">
-                    Des constantes globales sont disponibles dans global_const.php pour changer par exemple l'URL de base du projet
+                    Des constantes globales sont disponibles dans /public/index.php pour changer par exemple l'URL de base du projet
                 </li>
             </ul>
         </div>
